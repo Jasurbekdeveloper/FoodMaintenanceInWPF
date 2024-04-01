@@ -1,0 +1,404 @@
+﻿<Application
+    x:Class="FoodMaintenance.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
+    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+    xmlns:ValidationRules="clr-namespace:FoodMaintenance.ValidationRules"
+    xmlns:local="clr-namespace:FoodMaintenance">
+
+    <Application.Resources>
+
+        <Color x:Key="PrimaryColor">#8020FF</Color>
+        <SolidColorBrush x:Key="PrimaryColorBrush" Color="{StaticResource PrimaryColor}"/>
+        <Color x:Key="SecondaryColor">#2090FF</Color>
+        <SolidColorBrush x:Key="SecondaryColorBrush" Color="{StaticResource SecondaryColor}"/>
+
+        <LinearGradientBrush x:Key="PrimaryAndSecondaryColorGradientBrush">
+            <GradientStop Offset="0" Color="{StaticResource PrimaryColor}"/>
+            <GradientStop Offset="1" Color="{StaticResource SecondaryColor}"/>
+        </LinearGradientBrush>
+
+        <Color x:Key="SeparatorColor">#404040</Color>
+        <SolidColorBrush x:Key="SeparatorColorBrush" Color="{StaticResource SeparatorColor}"/>
+        <Color x:Key="OutlineColor">#707070</Color>
+        <SolidColorBrush x:Key="OutlineColorBrush" Color="{StaticResource OutlineColor}"/>
+        <Color x:Key="ValidationErrorColor">Red</Color>
+        <SolidColorBrush x:Key="ValidationErrorColorBrush" Color="{StaticResource ValidationErrorColor}"/>
+
+        <Color x:Key="MainBackgroundColor">#201E30</Color>
+        <SolidColorBrush x:Key="MainBackgroundColorBrush" Color="{StaticResource MainBackgroundColor}"/>
+        <Color x:Key="MainForegroundColor">White</Color>
+        <SolidColorBrush x:Key="MainForegroundColorBrush" Color="{StaticResource MainForegroundColor}"/>
+
+        <Color x:Key="ContentBackgroundColor">#303040</Color>
+        <SolidColorBrush x:Key="ContentBackgroundColorBrush" Color="{StaticResource ContentBackgroundColor}"/>
+        <Color x:Key="ContentForegroundColor">White</Color>
+        <SolidColorBrush x:Key="ContentForegroundColorBrush" Color="{StaticResource ContentForegroundColor}"/>
+
+        <Color x:Key="TitleBarBackgroundColor">#272537</Color>
+        <SolidColorBrush x:Key="TitleBarBackgroundColorBrush" Color="{StaticResource TitleBarBackgroundColor}"/>
+
+        <Color x:Key="MenuBarBackgroundColor">#1B192B</Color>
+        <SolidColorBrush x:Key="MenuBarBackgroundColorBrush" Color="{StaticResource MenuBarBackgroundColor}"/>
+        <Color x:Key="MenuBarButtonHover">#373547</Color>
+        <SolidColorBrush x:Key="MenuBarButtonHoverBrush" Color="{StaticResource MenuBarButtonHover}"/>
+        <Color x:Key="MenuBarButtonPressed">#413F51</Color>
+        <SolidColorBrush x:Key="MenuBarButtonPressedBrush" Color="{StaticResource MenuBarButtonPressed}"/>
+
+        <Color x:Key="ButtonBackgroundColor">#404050</Color>
+        <SolidColorBrush x:Key="ButtonBackgroundColorBrush" Color="{StaticResource ButtonBackgroundColor}"/>
+        <Color x:Key="ButtonForegroundColor">White</Color>
+        <SolidColorBrush x:Key="ButtonForegroundColorBrush" Color="{StaticResource ButtonForegroundColor}"/>
+        <Color x:Key="ButtonHoverColor">#5A5A6A</Color>
+        <SolidColorBrush x:Key="ButtonHoverColorBrush" Color="{StaticResource ButtonHoverColor}"/>
+        <Color x:Key="ButtonPressedColor">#2090FF</Color>
+        <SolidColorBrush x:Key="ButtonPressedColorBrush" Color="{StaticResource ButtonPressedColor}"/>
+        <Color x:Key="WarnedButtonHoverColor">#C02A2A</Color>
+        <SolidColorBrush x:Key="WarnedButtonHoverColorBrush" Color="{StaticResource WarnedButtonHoverColor}"/>
+        <Color x:Key="WarnedButtonPressedColor">#F04A4A</Color>
+        <SolidColorBrush x:Key="WarnedButtonPressedColorBrush" Color="{StaticResource WarnedButtonPressedColor}"/>
+
+        <Color x:Key="WindowButtonHoverColor">#373547</Color>
+        <SolidColorBrush x:Key="WindowButtonHoverColorBrush" Color="{StaticResource WindowButtonHoverColor}"/>
+        <Color x:Key="WindowButtonPressedColor">#009FAF</Color>
+        <SolidColorBrush x:Key="WindowButtonPressedColorBrush" Color="{StaticResource WindowButtonPressedColor}"/>
+
+        <Color x:Key="InputBackgroundColor">#303030</Color>
+        <SolidColorBrush x:Key="InputBackgroundColorBrush" Color="{StaticResource InputBackgroundColor}"/>
+        <Color x:Key="InputForegroundColor">White</Color>
+        <SolidColorBrush x:Key="InputForegroundColorBrush" Color="{StaticResource InputForegroundColor}"/>
+
+        <System:Double x:Key="Heading1FontSize">28</System:Double>
+        <System:Double x:Key="Heading2FontSize">20</System:Double>
+        <System:Double x:Key="Heading3FontSize">16</System:Double>
+        <System:Double x:Key="Text1FontSize">14</System:Double>
+
+        <ValidationRules:StringValidationRule
+            x:Key="NotNullOrWhiteSpaceValidationRule"
+            NullOrWhiteSpaceCheck="True"
+            ValidatesOnTargetUpdated="True"/>
+        <ValidationRules:StringValidationRule
+            x:Key="NumericValidationRule"
+            RegexPattern="^ *[0-9]+ *$"
+            RegexPatternErrorMessage="Must be a number."
+            ValidatesOnTargetUpdated="True"/>
+        <ValidationRules:ObjectValidationRule
+            x:Key="NotNullValidationRule"
+            NullCheck="True"
+            ValidatesOnTargetUpdated="True"/>
+
+        <Style x:Key="CustomColumnHeaderGripperStyle" TargetType="{x:Type Thumb}">
+            <Setter Property="Width" Value="3"/>
+            <Setter Property="Background" Value="#30FFFFFF"/>
+            <Setter Property="Cursor" Value="SizeWE"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Border Padding="2,0,2,0">
+                            <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate TargetType="{x:Type DataGridColumnHeader}" x:Key="CustomDataGridColumnHeaderTemplate">
+            <Grid>
+                <Themes:DataGridHeaderBorder
+                    Padding="{TemplateBinding Padding}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    IsClickable="True"
+                    IsHovered="{TemplateBinding IsMouseOver}"
+                    IsPressed="{TemplateBinding IsPressed}"
+                    SeparatorBrush="{TemplateBinding SeparatorBrush}"
+                    SeparatorVisibility="{TemplateBinding SeparatorVisibility}"
+                    SortDirection="{TemplateBinding SortDirection}">
+                    <ContentPresenter
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        RecognizesAccessKey="True"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+
+                    <Themes:DataGridHeaderBorder.Style>
+                        <Style TargetType="{x:Type Themes:DataGridHeaderBorder}">
+                            <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#5A5A6A"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="#7A7A8A"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Themes:DataGridHeaderBorder.Style>
+                </Themes:DataGridHeaderBorder>
+
+                <Thumb
+                    x:Name="PART_RightHeaderGripper"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource CustomColumnHeaderGripperStyle}"/>
+            </Grid>
+        </ControlTemplate>
+
+        <Style TargetType="{x:Type DataGridColumnHeader}" x:Key="MainColumnHeaderStyle">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#252535"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Template" Value="{StaticResource CustomDataGridColumnHeaderTemplate}"/>
+        </Style>
+
+        <Style TargetType="{x:Type DataGrid}" x:Key="MainDataGridStyle">
+            <Setter Property="AlternatingRowBackground" Value="#808090"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="CanUserSortColumns" Value="True"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="GridLinesVisibility" Value="All"/>
+            <Setter Property="Height" Value="300"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#303030"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="IsTextSearchEnabled" Value="True"/>
+            <Setter Property="RowBackground" Value="#505060"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#303030"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ColumnHeaderStyle" Value="{StaticResource MainColumnHeaderStyle}"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{StaticResource ButtonBackgroundColorBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource ButtonForegroundColorBrush}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border
+                            Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}}"
+                            HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource TemplatedParent}}"
+                            VerticalAlignment="{Binding VerticalAlignment, RelativeSource={RelativeSource TemplatedParent}}"
+                            Background="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"
+                            CornerRadius="5">
+
+                            <Label
+                                HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}}"
+                                VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}}"
+                                Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                FontSize="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                                                <Setter Property="Opacity" Value="0.3"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ButtonHoverColorBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ButtonPressedColorBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+
+        <Style
+            x:Key="WarnedButton"
+            BasedOn="{StaticResource {x:Type Button}}"
+            TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource WarnedButtonHoverColorBrush}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{StaticResource WarnedButtonPressedColorBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="{StaticResource Heading1FontSize}"/>
+            <Setter Property="Foreground" Value="{StaticResource MainForegroundColorBrush}"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{StaticResource InputBackgroundColorBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource InputForegroundColorBrush}"/>
+        </Style>
+
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Foreground" Value="{StaticResource InputForegroundColorBrush}"/>
+        </Style>
+        <Style x:Key="titleText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+        </Style>
+
+        <Style x:Key="normalText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="LineHeight" Value="18"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#ffffff"/>
+        </Style>
+
+        <Style x:Key="button" TargetType="Button">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Width" Value="170"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#fdfefe"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="25" BorderThickness="1" BorderBrush="White" Padding="15">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#e8e8e8"/>
+                    <Setter Property="Foreground" Value="DimGray"/>
+                </Trigger>
+
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#d9d9d9"/>
+                    <Setter Property="Foreground" Value="DimGray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+
+
+
+
+
+        <Style x:Key="buttonCircle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Margin" Value="0 8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="30" BorderThickness="1" BorderBrush="#878787" Padding="15">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#d9d9d9"/>
+                </Trigger>
+
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#c4c4c4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+        <Style x:Key="textHint" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Panel.ZIndex" Value="1"/>
+            <Setter Property="Margin" Value="10 0 0 0"/>
+            <Setter Property="Foreground" Value="#acb0af"/>
+        </Style>
+
+
+        <Style x:Key="textBox" TargetType="Control">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Margin" Value="10 0 0 0"/>
+            <Setter Property="Foreground" Value="#878787"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+
+
+
+
+
+
+        <Style x:Key="Mainbutton" TargetType="Button">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Margin" Value="0 20 0 0"/>
+            <Setter Property="Background" Value="#3AB19B"/>
+            <Setter Property="Foreground" Value="#FDFEFE"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="25" BorderThickness="1" BorderBrush="#49B7A3" Padding="15">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#339685"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#2d7a6c"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+
+        <Style x:Key="imageClose" TargetType="Image">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="0 13 13 0"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="RenderTransform" >
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+    </Application.Resources>
+
+</Application>
