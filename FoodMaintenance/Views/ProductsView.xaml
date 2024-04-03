@@ -48,7 +48,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Binding="{Binding Url}" Header="Image url  "/>
+                    <DataGridTextColumn Binding="{Binding Url}" Header="Image url"/>
                     <DataGridTemplateColumn Header="Unit Of Measurement">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -228,7 +228,6 @@
                                 UpdateSourceTrigger="PropertyChanged"
                                 ValidatesOnDataErrors="True">
                                 <Binding.ValidationRules>
-                                    <StaticResource ResourceKey="NumericValidationRule"/>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -497,9 +496,6 @@
                                 Path="SelectedProduct.Url"
                                 UpdateSourceTrigger="PropertyChanged"
                                 ValidatesOnDataErrors="True">
-                                <Binding.ValidationRules>
-                                    <StaticResource ResourceKey="NumericValidationRule"/>
-                                </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
                     </TextBox>

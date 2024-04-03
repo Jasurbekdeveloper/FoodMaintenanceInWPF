@@ -98,7 +98,16 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 </Border.Style>
             </Border>
 
-
+            <Slider
+                x:Name="ColumnsSlider"
+                Width="100"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                DockPanel.Dock="Right"
+                IsSnapToTickEnabled="True"
+                Maximum="5"
+                Minimum="3"
+                Value="1"/>
 
         </DockPanel>
 
@@ -187,8 +196,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                                          Foreground="{StaticResource ContentForegroundColorBrush}"
                                                          Text="$"/>
                                                 </StackPanel>
-
-
+                                                
                                                 <StackPanel
                                                          Grid.Row="1"
                                                          Grid.ColumnSpan="2"
@@ -196,11 +204,12 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                                                          Orientation="Horizontal"
                                                          HorizontalAlignment="Right">
 
-                                                    <Image
-                                                         Width="200"
-                                                        >
+                                                    <Image 
+                                                        Width="200">
+                                                        
                                                         <Image.Source>
-                                                            <BitmapImage UriSource="https://www.coca-cola.com/content/dam/onexp/us/en/brands/coca-cola-multi-brand/coke-category-logos/v2/coca-cola.jpg"/>
+                                                           
+                                                            <BitmapImage UriSource="{Binding Url}"/>
                                                         </Image.Source>
                                                     </Image>
 

@@ -12,7 +12,7 @@ namespace FoodMaintenance.Models
         [NotNull]
         public string? Name { get; set; }
         [NotNull]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
         [ForeignKey(typeof(ProductType))]
         public int TypeId { get; set; }
         [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead)]
