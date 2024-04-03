@@ -19,7 +19,7 @@ namespace FoodMaintenance.ValidationRules
         public string? MaxCharacterCountErrorMessage { get; set; }
         public string? RegexPattern{ get; set; }
         public string? RegexPatternErrorMessage { get; set; }
-        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+      /*  public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             string? ValueString = value as string;
 
@@ -43,6 +43,6 @@ namespace FoodMaintenance.ValidationRules
             }
 
             return new ValidationResult(true, null);
-        }
+        }*/
     }
 }

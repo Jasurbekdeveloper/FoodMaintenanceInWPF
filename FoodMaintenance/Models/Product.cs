@@ -11,12 +11,14 @@ namespace FoodMaintenance.Models
         public int Id { get; set; }
         [NotNull]
         public string? Name { get; set; }
+        [NotNull]
+        public decimal Price { get; set; }
         [ForeignKey(typeof(ProductType))]
         public int TypeId { get; set; }
         [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead)]
         public ProductType? Type { get; set; }
         [NotNull]
-        public float MinStockQuantity { get; set; }
+        public string? Url { get; set; }
         [ForeignKey(typeof(UnitOfMeasurement))]
         public int UnitOfMeasurementId { get; set; }
         [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead)]

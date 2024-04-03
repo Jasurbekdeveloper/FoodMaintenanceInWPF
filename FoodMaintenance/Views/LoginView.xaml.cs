@@ -14,7 +14,7 @@ namespace Login_Page
     public partial class MainWindow : Window
     {
         private readonly INavigationService _NavigationService = new NavigationService();
-        private readonly DbContext _DbContext = new DbContext("FoodMaintenance.db");
+        private readonly DbContext _DbContext = new DbContext("Market.db");
         public MainWindow()
         {
             InitializeComponent();
