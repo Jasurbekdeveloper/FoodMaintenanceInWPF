@@ -27,7 +27,7 @@ namespace FoodMaintenance.Views
         public string TotalPrice
         {
             get { return (string)GetValue(TotalPriceProperty); }
-            set { SetValue(TotalPriceProperty, $"Total Price: {value}"); }
+            set { SetValue(TotalPriceProperty, $"Total Price: {value} $"); }
         }
         public DashboardView()
         {
